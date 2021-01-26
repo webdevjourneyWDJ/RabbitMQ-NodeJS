@@ -2,7 +2,7 @@ const amqplib = require('amqplib');
 
 const queueName = "wdj";
 
-const sendMsg = async () => {
+const recieveMsg = async () => {
   const connection = await amqplib.connect('amqp://localhost');
   const channel = await connection.createChannel();
   await channel.assertQueue(queueName, {durable: false});
@@ -12,4 +12,4 @@ const sendMsg = async () => {
   }, {noAck: true})
 }
 
-sendMsg();
+recieveMsg();
